@@ -88,12 +88,12 @@ jobs:
       - name: Send slack when failed
         # 실패했을 때 실행되게 설정
         if: ${{ failure() }}
-        uses: ./github/actions/slack-notfiy
+        uses: ./github/actions/slack-notify
         with:
           slack_incoming_url: ${{secrets.SLACK_INCOMING_URL}}
       - name: Send slack if Completed
         if: ${{ success() }}
-        uses: ./github/actions/slack-notfiy
+        uses: ./github/actions/slack-notify
         with:
           status: success
           slack_incoming_url: ${{secrets.SLACK_INCOMING_URL}}
