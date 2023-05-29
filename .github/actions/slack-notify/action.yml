@@ -32,9 +32,11 @@ runs:
         # 전달받은 status 값을 이용해서 성공, 실패를 판단하고,
         # 그에 따른 이모티콘을 지정해볼게요.
         if [ "${{ inputs.status }}" = "success" ]; then
-          EMOTICON="✅"
+          EMOTICON="✅ 성공"
+        elif [ "${{ inputs.status }}" = "cancelled" ]; then
+          EMOTICON="⚠️ 취소"
         else
-          EMOTICON="⛔"
+          EMOTICON="❌ 실패"
         fi
 
         # ${GITHBU_REPOSITORY}, ${GITHUB_WORKFLOW}, ${GITHUB_RUN_ID} ..

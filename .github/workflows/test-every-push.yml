@@ -90,11 +90,18 @@ jobs:
         if: ${{ failure() }}
         uses: ./.github/actions/slack-notify
         with:
+          status: failure
           slack_incoming_url: ${{secrets.SLACK_INCOMING_URL}}
       - name: Send slack if Completed
         if: ${{ success() }}
         uses: ./.github/actions/slack-notify
         with:
           status: success
+          slack_incoming_url: ${{secrets.SLACK_INCOMING_URL}}
+      - name: Send slack if Cancelled
+        if: ${{ cancelled() }}
+        uses: ./.github/actions/slack-notify
+        with:
+          status: cancelled
           slack_incoming_url: ${{secrets.SLACK_INCOMING_URL}}
 
