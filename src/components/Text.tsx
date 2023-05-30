@@ -9,24 +9,23 @@ type TextProps<T extends React.ElementType> = {
   children: React.ReactNode;
 } & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children">;
 
-
-const Text = <C extends React.ElementType>({as, children, ...rest}: TextProps<C>) => {
-  const Component = as || 'span';
-  return <Component {...rest}>{children}</Component>
+const Text = <C extends React.ElementType>({
+  as,
+  children,
+  ...rest
+}: TextProps<C>) => {
+  const Component = as || "span";
+  return <Component {...rest}>{children}</Component>;
 };
 
 export default function Index() {
   return (
-      <>
-        <Text>Span Text</Text>
-        <Text as='h1'>Span Text</Text>
-        <Text as='div'>This is div Text</Text>
-        <Text
-            as='a'
-            href='https://google.com'
-        >
-          This anchor Text
-        </Text>
-      </>
-  )
+    <>
+      <Text>Span Text</Text>
+      <Text as='h1'>Span Text</Text>
+      <Text as='h3'>
+        {`hello ${process.env.REACT_APP_NAME}`}안녕하세요 반갑습니다.
+      </Text>
+    </>
+  );
 }
