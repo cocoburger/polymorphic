@@ -10,22 +10,23 @@ type TextProps<T extends React.ElementType> = {
 } & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children">;
 
 const Text = <C extends React.ElementType>({
-  as,
-  children,
-  ...rest
-}: TextProps<C>) => {
+                                             as,
+                                             children,
+                                             ...rest
+                                           }: TextProps<C>) => {
   const Component = as || "span";
   return <Component {...rest}>{children}</Component>;
 };
 
 export default function Index() {
   return (
-    <>
-      <Text>Span Text</Text>
-      <Text as='h1'>Span Text</Text>
-      <Text as='h3'>
-        {`hello ${process.env.REACT_APP_NAME}`}안녕하세요 반갑습니다.
-      </Text>
-    </>
+      <>
+        <Text>Span Text</Text>
+        <Text as='h1'>Span Text</Text>
+        <Text as='h2'>nginx로 배포 완료했나요?</Text>
+        <Text as='h3'>
+          {`hello ${process.env.KOREAN_FOOD} 새롭게 추가한 문구입니다.`}
+        </Text>
+      </>
   );
 }
